@@ -2,9 +2,11 @@ class Node:
     """
     consructs city nodes with adjacency list of the nodes
     """
-    def __init__(self, item):
+    def __init__(self, item, latitude = None, longitude = None):
         self.item = item
         self.adjacent_nodes = []
+        self.latitude = latitude
+        self.longitude = longitude
 
     def add_adjacent_node(self, node, cost):
         self.adjacent_nodes.append((node, cost))
@@ -15,11 +17,11 @@ class Graph:
     def __init__(self):
         self.graph = set()
     
-    def create_node(self, item):
+    def create_node(self, item, latitude = None, longitude = None):
         """
         create node
         """
-        node = Node(item)
+        node = Node(item, latitude, longitude)
         return node
     
     def insert_node(self, node):
@@ -70,6 +72,9 @@ class Graph:
           if neighbour not in visited:
               res = res or self.has_path(neighbour, dst, visited)
       return res
+    
+    def __str__(self):
+        return "[" + ", ".join([node.item for node in self.graph]) + "]"
 
 
 
