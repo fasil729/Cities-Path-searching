@@ -37,12 +37,27 @@ class Graph:
         self.graph.remove(node)
         del node
     
-    def insert_edge(self, node_A, node_B):
+    def insert_edge(self, node_A, node_B, cost):
         """
         inserts the edge to beteween node_A and node_B
         """
-        node_A.add_adjacent_node(node_B)
-        node_B.add_adjacent_node(node_A)
+        node_A.add_adjacent_node(node_B, cost)
+        node_B.add_adjacent_node(node_A, cost)
+
+    def insert_edge_by_item(self, item_A, cost, item_B):
+        """
+        inserts the edge to beteween item_A and item_B
+        """
+        node_A = self.search_item(item_A)
+        node_B = self.search_item(item_B)
+        if node_A and node_B:
+            node_A.add_adjacent_node(node_B, cost)
+            node_B.add_adjacent_node(node_A, cost)
+        if not node_A:
+            print(item_A, "is not found in the graph")
+        if not node_B:
+            print(item_B, "is not found in the graph")
+
     
     def delete_edge(self, node_A, node_B):
         """
