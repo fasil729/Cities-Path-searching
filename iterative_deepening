@@ -1,0 +1,21 @@
+def iterative_deepening_search(graph, start, goal):
+    depth = 0
+    while True:
+        result = depth_limited_search(graph, start, goal, depth)
+        if result != 'cutoff':
+            return result
+        depth += 1
+
+def depth_limited_search(graph, node, goal, depth):
+    if node == goal:
+        return [node]
+    if depth == 0:
+        return 'cutoff'
+    cutoff_occurred = False
+    for neighbor in graph[node]:
+        result = depth_limited_search(graph, neighbor, goal, depth - 1)
+        if result == 'cutoff':
+            cutoff_occurred = True
+        elif result is not None:
+            return [node] + result
+    return 'cutoff' if cutoff_occurred else None
