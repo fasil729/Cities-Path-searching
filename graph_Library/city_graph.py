@@ -1,9 +1,9 @@
-from graph import Node, Graph
+from  .graph import Graph
 # import os
 # print(os.getcwd())
 
 cities = open("cities.txt", "r")
-cities_graph = Graph()
+cities_graph =Graph()
 for line in cities:
     arr = line.split()
     print(arr)
