@@ -1,3 +1,4 @@
+from graph_Library.city_graph import cities_graph
 import heapq
 
 def uniform_cost_search(graph, start, goal):
@@ -9,10 +10,10 @@ def uniform_cost_search(graph, start, goal):
         (cost, node, path) = heapq.heappop(queue)
         if node not in visited:
             visited.add(node)
-            path = path + [node]
+            path = path + [node.item]
 
             if node == goal:
-                return path
+                return path, cost
 
             for neighbor, dist in node.adjacent_nodes:
                 if neighbor not in visited:
@@ -21,6 +22,11 @@ def uniform_cost_search(graph, start, goal):
 
     return []
 
+
+romania = cities_graph
+bucharest = cities_graph.search_item("Bucharest")
+arad = cities_graph.search_item("Arad")
+print(uniform_cost_search(romania, arad, bucharest))
 
 
     
