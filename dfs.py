@@ -1,37 +1,33 @@
 from graph_Library.city_graph import cities_graph
+from graph_Library.graph import Node
 import random
-# romania_file = open("romania.txt", "r")
-romania_graph = cities_graph
-
-# for line in romania_file:
-#     city1, city2, distance = line.split()
-#     print( city1,city2, distance)
-#     romania_graph.add_edge(city1, city2, weight=int(distance))
-# # print(romania_graph.nodes,romania_graph.edges)
-
-def dfs(start, goal):
-    stack = [(start, [start])]
-    print(f"Path From {start} to {goal} is:- {start}",end="")
-    while stack:
-        (vertex, path) = stack.pop()
-        
-        for next_node in vertex.adjacent_nodes:
-            
-            if next_node not in path:
-                print(f"-->{next_node}",end="")
-               
-                if next_node == goal:
-                    return path + [next_node]
-                else:
-                    stack.append((next_node, path + [next_node]))
-random_cities = random.sample(list(romania_graph), 4)
-print(random_cities)
+class Dfs:
+  romania_graph =cities_graph
+  def dfs(self,start,goal):
+      path=[]
+      stack=[start]
+      total_distance=0
+      print(f"Path from {start.item} to {goal.item} is :- ",end="")
+      while stack!=[]:
+          current_node=stack.pop()
+          if current_node.item not in path:
+              path.append(current_node.item)
+              print(f"{current_node.item}-->",end=" ")
+              if current_node.item==goal.item:
+                  break
+              for neighbour,cost in current_node.adjacent_nodes:
+                  stack.append(neighbour)
+              total_distance+=cost
+                  
+      print()
+      print(f"Total Distance: {total_distance}")
+D=Dfs()
+random_cities = random.sample(list(D.romania_graph.graph), 4)
 for city1 in random_cities:
     for city2 in random_cities:
         if city1 != city2:
             
-            dfs_path = dfs(city1, city2)
+            dfs_path = D.dfs(city1, city2)
             print()
-           
-
-    
+      
+      

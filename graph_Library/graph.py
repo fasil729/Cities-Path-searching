@@ -12,6 +12,7 @@ class Node:
         self.adjacent_nodes.append((node, cost))
     def delete_adjacent_node(self, node):
         self.adjacent_nodes = [tup for tup in self.adjacent_nodes if node not in tup]
+    
 
 class Graph:
     def __init__(self):
@@ -43,7 +44,9 @@ class Graph:
         """
         node_A.add_adjacent_node(node_B, cost)
         node_B.add_adjacent_node(node_A, cost)
-
+        
+    def display(self):
+        return self.adjacent_nodes
     def insert_edge_by_item(self, item_A, cost, item_B):
         """
         inserts the edge to beteween item_A and item_B
@@ -57,6 +60,7 @@ class Graph:
             print(item_A, "is not found in the graph")
         if not node_B:
             print(item_B, "is not found in the graph")
+        # print(node_A)
 
     
     def delete_edge(self, node_A, node_B):
@@ -65,6 +69,7 @@ class Graph:
         """
         node_A.delete_adjacent_node(node_B)
         node_B.delete_adjacent_node(node_A)
+        
 
     def search_item(self, item):
         """
