@@ -4,30 +4,36 @@ import random
 class Dfs:
   romania_graph =cities_graph
   def dfs(self,start,goal):
-      path=[]
-      stack=[start]
+      print("Depth First Search: ")
+      print("--------------------------")
+      path=set()
+      stack=[(start,0)]
       total_distance=0
+      
+    
       print(f"Path from {start.item} to {goal.item} is :- ",end="")
       while stack!=[]:
           current_node=stack.pop()
-          if current_node.item not in path:
-              path.append(current_node.item)
-              print(f"{current_node.item}-->",end=" ")
-              if current_node.item==goal.item:
+          
+          if current_node[0].item not in path:
+              path.add(current_node[0].item)
+              print(f"{current_node[0].item}-->",end=" ")
+              total_distance+=current_node[1]
+              if current_node[0].item==goal.item:
                   break
-              for neighbour,cost in current_node.adjacent_nodes:
-                  stack.append(neighbour)
-              total_distance+=cost
-                  
+              
+              for neighbour,cost in current_node[0].adjacent_nodes:
+                  if neighbour.item not in path:
+                 
+                   stack.append((neighbour,cost))
+              
+                   
+                   
       print()
-      print(f"Total Distance: {total_distance}")
-D=Dfs()
-random_cities = random.sample(list(D.romania_graph.graph), 4)
-for city1 in random_cities:
-    for city2 in random_cities:
-        if city1 != city2:
-            
-            dfs_path = D.dfs(city1, city2)
-            print()
+      print(f"Total Distance: {total_distance}\n")
+      print("Time complexity:", len(path))
+
+      
+
       
       
