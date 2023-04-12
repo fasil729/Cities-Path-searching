@@ -20,7 +20,7 @@ def uniform_cost_search(graph, start, goal):
                     total_cost = cost + dist
                     heapq.heappush(queue, (total_cost, neighbor, path))
 
-    return []
+    return [], 0
 
 
 romania = cities_graph
