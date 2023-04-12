@@ -11,8 +11,11 @@ def iterative_deepening_search(graph, start, goal):
 def depth_limited_search(graph, node, goal, depth):
     if node == goal:
         return [node.item], 0
+    if not node.adjacent_nodes:
+        return None, 0
     if depth == 0:
         return 'cutoff', 0
+    
     cutoff_occurred = False
     for neighbor, cost in node.adjacent_nodes:
         result, prev_cost = depth_limited_search(graph, neighbor, goal, depth - 1)
@@ -23,22 +26,9 @@ def depth_limited_search(graph, node, goal, depth):
     return 'cutoff' if cutoff_occurred else None, 0
 
 
-romania = cities_graph
-bucharest = cities_graph.search_item("Bucharest")
-arad = cities_graph.search_item("Arad")
-print("by iterative deepening", iterative_deepening_search(romania, arad, bucharest))
+# romania = cities_graph
+# bucharest = cities_graph.search_item("Bucharest")
+# arad = cities_graph.search_item("Arad")
+# print("by iterative deepening", iterative_deepening_search(romania, arad, bucharest))
 
 
-import networkx as nx
-
-n = 10
-p = 0.4
-
-
-G = nx.gnp_random_graph(n, p)
-
-print(G.nodes, G.edges)
-i = 0
-# graph = [node.item = i for node in G.nodes i+=1]
-# print(graph[0])
-# print("by iterative deepening", iterative_deepening_search(graph, graph[0], graph[2]))

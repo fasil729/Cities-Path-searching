@@ -24,14 +24,7 @@ def dfs(start, goal):
                     return path + [next_node]
                 else:
                     stack.append((next_node, path + [next_node]))
-random_cities = random.sample(list(romania_graph), 4)
-print(random_cities)
-for city1 in random_cities:
-    for city2 in random_cities:
-        if city1 != city2:
-            
-            dfs_path = dfs(city1, city2)
-            print()
+
            
 
     
