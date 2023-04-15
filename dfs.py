@@ -1,4 +1,5 @@
 from graph_Library.city_graph import cities_graph
+from graph_Library.graph import Node
 import random
 # romania_file = open("romania.txt", "r")
 romania_graph = cities_graph
@@ -9,7 +10,7 @@ romania_graph = cities_graph
 #     romania_graph.add_edge(city1, city2, weight=int(distance))
 # # print(romania_graph.nodes,romania_graph.edges)
 
-def dfs(graph, start, goal):
+def dfs(start, goal):
     stack = [(start, [start])]
     print(f"Path From {start} to {goal} is:- {start}",end="")
     while stack:

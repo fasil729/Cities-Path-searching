@@ -4,9 +4,10 @@ from  .graph import Graph
 
 cities = open("cities.txt", "r")
 cities_graph =Graph()
+
 for line in cities:
     arr = line.split()
-    print(arr)
+    # print("arr",arr)
     if len(arr) == 3:
         city, latitude, longitude = arr
     else:
