@@ -9,7 +9,7 @@ romania_graph = cities_graph
 #     romania_graph.add_edge(city1, city2, weight=int(distance))
 # # print(romania_graph.nodes,romania_graph.edges)
 
-def dfs(start, goal):
+def dfs(graph, start, goal):
     stack = [(start, [start])]
     print(f"Path From {start} to {goal} is:- {start}",end="")
     while stack:

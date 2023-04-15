@@ -45,7 +45,7 @@ cities_graph.insert_edge_by_item('Hirsova',86,'Eforie')
 cities_graph.insert_edge_by_item('Vaslui',92,'Iasi')
 cities_graph.insert_edge_by_item('Iasi',87,'Neamt')
 
-print(cities_graph)
+# print(cities_graph)
 
 
         

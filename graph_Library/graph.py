@@ -14,7 +14,7 @@ class Node:
         self.adjacent_nodes = [tup for tup in self.adjacent_nodes if node not in tup]
 
     def __lt__(self, obj):
-        return self.item < obj.item 
+        return True 
 
 class Graph:
     def __init__(self):
